@@ -22,5 +22,20 @@ AAABBBCCC
 파이썬에서 이거를 어떻게 할지 모르겠음.
 정확히는 c에서 동적할당 하는거처럼 하는게 아니니가,고민중
 
-이거만 되면 문제 바로 풀수 
+이거만 되면 문제 바로 풀수있는데 고민중임ㅋ
 =>
+방법 1
+###11111111111
+string = []
+while True:
+    input_data = input()
+    if input_data =='':
+        break
+    else:
+        string.append(input_data)
+for line in string:
+    print(line)
+    
+ 빈 스트링을 생성해놓고, 무한루프 안에서, 인풋을 계속 받아와서 그거를 본체에 append하여 업로드 하는느낌.
+ 이렇게 하면, 본체스트링에는 개행문자까지도 저장이 된다.(마치 이런식. "str1\nstr2\nstr3")
+ ~> 이걸 이용해서 풀어보자면,
