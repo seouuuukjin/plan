@@ -39,3 +39,29 @@ for line in string:
  빈 스트링을 생성해놓고, 무한루프 안에서, 인풋을 계속 받아와서 그거를 본체에 append하여 업로드 하는느낌.
  이렇게 하면, 본체스트링에는 개행문자까지도 저장이 된다.(마치 이런식. "str1\nstr2\nstr3")
  ~> 이걸 이용해서 풀어보자면,
+ 
+ string = []
+while True:
+    input_data = input()
+    if input_data =='':
+        break
+    else:
+        string.append(input_data)
+count = int(string[0])
+i =0
+while count >0:
+    i += 1
+    if(string[i] == '\n'):
+       count -= 1
+       i += 1
+    iter = int(string[i])
+    i += 2
+    print(string[i])
+    
+ 이렇게 풀다가 너무 비효율적이라서 자괴감들어서 그만했음.
+ 내일 다시 새로운 방법으로 함수를 짜서 넣는방식으로 해보자.
+ 방금 조금 생각해보니 생각나는건, 본체 string에 전부다 들어있으니까(개행문자 포함해서...)
+ 새로운 배열로 쪼개서, 개행문자 만날때 까지 새로운 배열에 저장하기. 그러고 난 다음에는 해당 배열만 순회하면서 요소들마다 
+ 반복출력. 끝나면 다시 새로운 배열로 필요한 만큼 떼와서 똑같이 진행하는거지
+ 
+ 이건 일단 내일 다시 
