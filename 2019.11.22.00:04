@@ -1,0 +1,24 @@
+string = []
+while True:
+    input_data = input()
+    if input_data =='':
+        break
+    else:
+        string.append(input_data)
+count = int(string[0])
+while count >0:
+    i += 1
+    arr = []
+    rep = int(string[i][0])
+    for idx, x in enumerate(string[i]):
+        if(idx <2):
+            continue
+        arr.append(x)
+    for val in arr:
+        print(val * rep, end = '')
+    count -= 1
+    print()
+    
+    
+    
+ 오류코트 ; 런타임에러
