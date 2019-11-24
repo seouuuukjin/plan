@@ -1,0 +1,55 @@
+*파이썬 print 함수 정리
+
+*파이썬 map함수 와 iterator
+
+*파이썬 sys module과 stdin의 read/readline/readlines
+
+오늘 정리를 시작해보자.
+=
+파이썬 print!
+=
+  형식 => print(출력내용, [, sep = 구분자][, end = 끝문자])
+    이때 []는 생략가능하다는 소리
+  
+  ex) >>> print(3+4) 
+          7
+  @ 출력할게 여러개라면 콤마(,)또는 플러스(+)를 이용해서 나열 
+    (단, 문자열끼리는 +로 연이어서 출력, 문자열 + 숫자는 불가능, 숫자+숫자는 더하기로 계산됨)
+  ex) >>> print("my name is", 변수이름, "abcd", sep = ',')
+          my name is,변수이름,abcd
+          
+  @ str.format() 함수로 표현하기
+  ex) >>> print('{0} and {1}'.format('spam', 'eggs')) #spam and eggs
+  ex) >>> print('{1} and {0}'.format('spam', 'eggs')) #eggs and spam
+  
+  @ %d, %s, %f 등등 사용하기 (출력문 안쪽에 %s를 쓰고, 출력구문 바로 뒤에 %쓰고 변수이름)
+  ex) >>> print('%s and %d'%(변수1, 변수2))
+  ex) >>> print('%s is 0606'%문자열1)
+  
+  @문자열 예제
+  print("case %d: %d + %d = %d"%(i, a, b, a+b))
+  || 
+  print("case {0}: {1} + {2} = {3}"%(i, a, b, a+b))
+  
+=
+파이썬 map 함수와 iterator
+=
+  형식 => map(적용할 함수, 입력할 리스트)
+  리턴값은 map object(맵 객체)
+  
+  맵 객체란? => iterator라서 변수 여러개에 저장하는 unpacking이 가능함. 따라서 이런게 가능함
+                a,b = map(~~~) ; 가능!
+  iterator란? => 값을 차례대로 꺼낼수 있는 객체이다. 연속된 숫자를 미리 만들면 메모리 낭비
+                 ->따라서 iterator만 생성하고, 값이 필요한 시점에 뒤에 올 값을 생성하는 것
+                 ex) range도  iterator인데, 숫자를 다 만들어내는 것이 아니라, 숫자를 하나씩
+                      꺼낼수 있는 iterator 하나만 만들어내는것임.
+                      
+=
+파이썬 sys 모듈과 stdin
+=
+import sys
+a= list(map(int, sys.stdin.readline().split())) #입력이 "1 2 3" 이라면, a = [1, 2, 3]이다
+이때 sys.stdin.readline().split()의 반환값은 리스트임
+
+list1 = sys.stdin.readline().~~~~ #1줄만 읽어서 문자열 리턴하기
+list2 = sys.stdin.readlines().~~~~ #모든 줄 다 읽어서 문자열로 구성된 리스트 
