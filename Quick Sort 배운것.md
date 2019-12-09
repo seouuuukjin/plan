@@ -33,14 +33,10 @@ void quicksort(int arr[], int start, int last){
 int main()
 {
     int arr[50];
-    printf("!!!");
     srand((int)time(NULL));
-    printf("~\n");
-    for(int i=0; i<50; i++){
+    for(int i=0; i<50; i++){ //arr에 0~99사이의 숫자 랜덤하게 집어넣기
         arr[i] = rand() % 100;
     }
-    printf("~\n");
-    
     quicksort(arr, 0, 49);
     
     for(int i=0; i<50; i++){
