@@ -9,7 +9,10 @@ void swap(int arr[], int i, int j){
     arr[j] = tmp;
 }
 void quicksort(int arr[], int start, int last){
-    int pivot = arr[start];
+    int pivot = arr[start]; //개선의 여지 1 : pivot을 시작,중간,끝 세점을 잡아서 중간값으로 하면 더 효율적이다.
+    /*
+    여기에다가 원소가 1개인 배열일 경우 그대로 둔다는 조건문을 두면 more효율적
+    */
     int i = start + 1;
     int j = last;
     
@@ -24,10 +27,12 @@ void quicksort(int arr[], int start, int last){
         }
         swap(arr, i, j);      
     }
-    if(start < (j-1))
+    
+    if(start < (j-1)) //이거랑
         quicksort(arr, start, j-1);
-    if(i < last)
+    if(i < last) // 이거처럼 원소하나인거 거르는 이프문 두개보다는 위에 함수 시작하자마자 두는게 좋다.
         quicksort(arr, i, last);
+    //또한 이렇게 보다는 원소의 개수가 6개정도 이하로떨어지면 삽입정렬을 적용시키는게 좋다.
 }
 
 int main()
