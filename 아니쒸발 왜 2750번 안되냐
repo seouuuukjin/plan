@@ -1,4 +1,7 @@
 #include <iostream>
+
+int arr[1000000];
+
 void swap(int arr[], int i, int j){
     int tmp = arr[i];
     arr[i] = arr[j];
@@ -15,39 +18,76 @@ void insertion_sort(int arr[], int start, int last){
 void quicksort(int arr[], int start, int last){
     if(start >= last)
     	return;
-	if((last - start) <= 4){
+	if((last - start) <= 6){
 		insertion_sort(arr, start, last);
 		return;
-	}	
-    int pivot = arr[start];
-    int i = start + 1;
-    int j = last;
+	}
+	int pivot;
+	int a= arr[start];
+	int b= arr[(start+last)/2];
+	int c= arr[last];
+	if(((a-b)*(b-c)) > 0){
+		pivot = b;
+		if((a-b)>0){
+			arr[start] = c;
+			arr[(start+last)/2] = a;
+		}
+		else{
+			arr[(start+last)/2] = c;
+		}
+	}
+	else if(((a-c)*(c-b)) > 0){
+		pivot = c;
+		if((a-c)>0){
+			arr[start] = b;
+			arr[(start+last)/2] = a;
+		}
+		else{
+			arr[start] = a;
+			arr[(start+last)/2] = b;
+		}
+	}
+	else{
+		pivot  = a;
+		if((b-a)>0){
+			arr[start] = c;
+			arr[(start+last)/2] = b;
+		}
+		else{
+			arr[start] = b;
+			arr[(start+last)/2] = c;
+		}
+	}
+		
+    int i = start;
+    int j = last-1;
     while(i<=j){
-        while(pivot >= arr[i] && i < last)
+        while(pivot >= arr[i])
             i++;
-        while(pivot <= arr[j] && j > start)
+        while(pivot <= arr[j] && j >= start)
             j--;
-        if(i > j){
-            swap(arr, start, j);
+        if(j < i){
+            arr[last] = arr[i];
+            arr[i] = pivot;
             break;
         }
         swap(arr, i, j);      
     }
-    quicksort(arr, start, j-1);
-    quicksort(arr, i, last);
+    quicksort(arr, start, i);
+    quicksort(arr, i+1, last);
 }
 int main(){
     int len;
     scanf("%d", &len);
-    int *arr = new int[len];
+    //int *arr = new int[len];
     for(int i=0; i<len; i++){
         scanf("%d", &(arr[i]));
     }
     quicksort(arr, 0, len-1);
     
-    for(int i=0; i<len-1; i++){
+    for(int i=0; i<len; i++){
         printf("%d\n", arr[i]);
     }
-    printf("%d",arr[len-1]);
+    
     return 0;
 }
