@@ -1,6 +1,8 @@
 # plan
 What I want
 
+https://tinyurl.com/2020onme
+==================== 
 2020여름 2020겨울(무조건) 네이버 핵데이 지원하기 ( https://recruit.navercorp.com/naver/recruitMain )
 ====================
 군대내 에서 프로젝트 하나해서 깃헙에 완성해놓기
